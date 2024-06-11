@@ -9,10 +9,10 @@
 <body>
 <div class="container">
     <h2>Register</h2>
-    <form th:action="@{/register}" th:object="${user}" method="post">
+    <form th:action="@{/register}" th:object="${customer}" method="post">
         <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" id="username" name="user" th:field="*{username}" required>
+            <input type="text" id="username" name="customer" th:field="*{username}" required>
         </div>
         <div class="form-group">
             <label for="email">Email</label>

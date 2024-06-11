@@ -13,12 +13,12 @@ import java.util.ArrayList;
 public class CustomUserDetailsService implements UserDetailsService {
 
     @Autowired
-    private UserRepository userRepository;
+    private CustomerRepository customerRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
-        if(user == null){
+        Customer customer = customerRepository.findByUsername(username);
+        if(customer == null){
             throw new UsernameNotFoundException("Not found");
         }
 
@@ -28,8 +28,8 @@ public class CustomUserDetailsService implements UserDetailsService {
         roles.add(role);
 
         return new org.springframework.security.core.userdetails.User(
-                user.getUsername(),
-                user.getPassword(),
+                customer.getUsername(),
+                customer.getPassword(),
                 new ArrayList<>() //roles
         );
     }

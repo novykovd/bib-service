@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class RegisterController {
 
     @Autowired
-    UserRepository repository;
+    CustomerRepository repository;
 
     @GetMapping
     public String register(Model model){
@@ -23,10 +23,8 @@ public class RegisterController {
 
     @PostMapping
     public String registerUser(@ModelAttribute PojoUser user){
-        User newUser = new User();
-        newUser.setUsername(user.username);
-        newUser.setPassword(user.password);
-        repository.save(newUser);
+        Customer newCustomer = new Customer(user.username, user.password);
+        repository.save(newCustomer);
         return "redirect:/login";
     }
 }
