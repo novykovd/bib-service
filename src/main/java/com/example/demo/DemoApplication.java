@@ -19,26 +19,26 @@ public class DemoApplication {
 	}
 
 
-	@Bean
-	public CommandLineRunner demo(CustomerRepository repository) {
-		return (args) -> {
-			// save a few customers
-			repository.save(new Customer("Jack", "Bauer"));
-			repository.save(new Customer("Chloe", "O'Brian"));
-			repository.save(new Customer("Kim", "Bauer"));
-			repository.save(new Customer("David", "Palmer"));
-			repository.save(new Customer("Michelle", "Dessler"));
-
-			// fetch all customers
-			log.info("Customers found with findAll():");
-			log.info("-------------------------------");
-			repository.findAll().forEach(customer -> {
-				log.info(customer.getUsername());
-			});
-			log.info("");
-
-
-		};
-	}
+//	@Bean
+//	public CommandLineRunner demo(CustomerRepository repository) {
+//		return (args) -> {
+//			// save a few customers
+//			repository.save(new Customer("Jack", "Bauer"));
+//			repository.save(new Customer("Chloe", "O'Brian"));
+//			repository.save(new Customer("Kim", "Bauer"));
+//			repository.save(new Customer("David", "Palmer"));
+//			repository.save(new Customer("Michelle", "Dessler"));
+//
+//			// fetch all customers
+//			log.info("Customers found with findAll():");
+//			log.info("-------------------------------");
+//			repository.findAll().forEach(customer -> {
+//				log.info(customer.getUsername());
+//			});
+//			log.info("");
+//
+//
+//		};
+//	}
 
 }
