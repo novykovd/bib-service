@@ -33,7 +33,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         role.setAuthority("USER");
         roles.add(role);
 
-        UserDetails userDetails = User.builder().username(customer.getUsername()).password(customer.getPassword()).passwordEncoder((rawPass) -> passwordEncoder.encode(rawPass)).build();
+        UserDetails userDetails = User.builder().username(customer.getUsername()).password(customer.getPassword()).roles("USER").passwordEncoder((rawPass) -> passwordEncoder.encode(rawPass)).build();
 
         return userDetails;
 
