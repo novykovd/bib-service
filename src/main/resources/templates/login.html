@@ -3,24 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Login - Demo Application</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
-<div class="login-container">
-    <div class="login-form">
-        <h2>Login</h2>
-        <form th:action="@{/login}" method="post">
-            <div class="input-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
-            </div>
+<header>
+    <h1>demo app</h1>
+</header>
+<div class="container">
+    <div class="description">
+        <h1>bib</h1>
+        <p class="slogan">service to share and track favorite literature</p>
+    </div>
+    <div class="form-container">
+        <form class="form" th:action="@{/login}" method="post">
+            <h2>Login</h2>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
             <button type="submit">Login</button>
-            <p class="register-link">Don't have an account? <a href="#">Register</a></p>
+            <a href="register.html" class="register-link">Register</a>
         </form>
     </div>
 </div>
