@@ -37,10 +37,10 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http
                 .authorizeHttpRequests((requests) -> {requests
-                        .requestMatchers("/home").hasAuthority("ROLE_USER")
+                        .requestMatchers("/user").hasAuthority("ROLE_USER")
                         .requestMatchers("/register", "/login", "/css/**", "/h2-console/**").permitAll()
                         .anyRequest().authenticated();})
-                .formLogin((form) -> form.loginPage("/login").defaultSuccessUrl("/home").permitAll())
+                .formLogin((form) -> form.loginPage("/login").defaultSuccessUrl("/user/home").permitAll())
                 .logout(LogoutConfigurer::permitAll);
 
         return http.build();

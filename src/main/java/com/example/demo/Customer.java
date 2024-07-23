@@ -43,5 +43,9 @@ public class Customer {
         return id;
     }
 
+    public void addIsbn(Long isbn){
+        isbnList.add(isbn);
+    }
+
 
 }
