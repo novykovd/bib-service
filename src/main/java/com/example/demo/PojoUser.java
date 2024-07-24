@@ -5,6 +5,7 @@ import java.util.List;
 public class PojoUser {
     public String username;
     public String password;
+    public String email;
     public List<String> isbnList;
 
     public void setPassword(String password) {
@@ -26,4 +27,10 @@ public class PojoUser {
     public void setIsbnList(List<String> isbns){this.isbnList = isbns;}
 
     public List<String> getIsbnList(){return isbnList;}
+
+    public String getEmail(){ return email;}
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

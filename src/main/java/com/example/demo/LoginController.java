@@ -8,14 +8,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/login")
+@RequestMapping
 public class LoginController {
 //    @Autowired
 //    AuthenticationManager authenticationManager;
 
 
-    @GetMapping
+    @GetMapping("/login")
     public String login(Model model){
         return "login";
     }
+
+    @GetMapping("/logout")
+    public String logout(){
+        return "redirect:/login";
+    }
+
 }

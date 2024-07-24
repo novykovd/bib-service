@@ -2,6 +2,7 @@ package com.example.demo;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -12,6 +13,8 @@ public class Customer {
     @Column(unique = true)
     private String username;
     private String password;
+
+    private String email;
 
 
     @ElementCollection
@@ -25,6 +28,12 @@ public class Customer {
         this.password = password;
         this.username = username;
         this.isbnList = isbnList;
+    }
+
+    public Customer(String username, String password, String email){
+        this.password = password;
+        this.username = username;
+        this.email = email;
     }
 
     public Customer(String username, String password){
@@ -43,9 +52,14 @@ public class Customer {
         return id;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public void addIsbn(Long isbn){
         isbnList.add(isbn);
     }
+    public void clearIsbn(){isbnList = new ArrayList<Long>();}
 
 
 }

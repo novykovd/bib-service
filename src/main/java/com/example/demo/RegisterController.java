@@ -23,7 +23,7 @@ public class RegisterController {
 
     @PostMapping
     public String registerUser(@ModelAttribute PojoUser user){
-        Customer newCustomer = new Customer(user.username, user.password);
+        Customer newCustomer = new Customer(user.username, user.password, user.email);
         repository.save(newCustomer);
         return "redirect:/login";
     }

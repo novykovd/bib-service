@@ -25,6 +25,8 @@ public class UserController {
     public String home(Principal principal, Model model){
         if(principal != null) {
             model.addAttribute("username", principal.getName());
+            Customer customer = repository.findByUsername(principal.getName());
+            model.addAttribute("isbnList", customer.getIsbnList());
             return "index";
         }else{
             return "error";
@@ -48,12 +50,16 @@ public class UserController {
     @PostMapping("/edit")
     public String editPost(@RequestParam("isbn") List<Long> ibsnList, Principal principal){
         log.info(ibsnList.toString());
+
+        Customer customer = repository.findByUsername(principal.getName());
+        customer.clearIsbn();
+
         for (Long num : ibsnList) {
             int length = String.valueOf(num).length();
             if (length != 13) {
                 return "error";
             }
-            Customer customer = repository.findByUsername(principal.getName());
+
             customer.addIsbn(num);
             repository.save(customer);
         }

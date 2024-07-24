@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage List - Demo Application</title>
+    <title>Manage List</title>
     <link rel="stylesheet" th:href="@{/css/stylesEdit.css}">
 </head>
 <body>
@@ -13,7 +13,9 @@
     </div>
     <div class="header-right">
         <a href="/user/home" class="header-link" id="edit-button">Home</a>
-        <a href="/logout" class="header-link" id="logout-button">Logout</a>
+        <form th:action="@{/logout}" method="post" style="display:inline;">
+            <button type="submit" class="header-link" id="logout-button">Logout</button>
+        </form>
     </div>
 </header>
 <div class="container">
@@ -26,7 +28,7 @@
         <ul id="item-list">
             <li th:each="isbn : ${isbnList}">
                 <input type="text" name="isbn" th:value="${isbn}">
-                <button class="delete-button">Delete</button>
+                <button class="delete-button" onClick="removeItem(event)" type="button">Delete</button>
             </li>
         </ul>
         <button type="submit">SUBMIT</button>
@@ -44,11 +46,6 @@
             addItem();
         });
 
-        list.addEventListener('click', function(event) {
-            if (event.target.classList.contains('delete-button')) {
-                removeItem(event.target.parentElement);
-            }
-        });
 
         function addItem() {
             const list = document.getElementById('item-list');
@@ -56,15 +53,20 @@
             const li = document.createElement('li');
             li.innerHTML = `
                 <input type="text" name="isbn">
-                <button class="delete-button">Delete</button>
+                <button class="delete-button" onClick="removeItem(event)" type="button">Delete</button>
             `
             list.appendChild(li);
         }
 
-        function removeItem(item) {
+
+    });
+
+    function removeItem(event) {
+            const list = document.getElementById('item-list');
+            event.preventDefault();
+            item = event.target.parentNode;
             list.removeChild(item);
         }
-    });
 </script>
 </body>
 </html>

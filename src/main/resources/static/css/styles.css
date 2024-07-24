@@ -21,6 +21,9 @@ header {
     background-color: #eeeeee;
     padding: 10px;
     text-align: left;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
 }
 
 header h1 {
