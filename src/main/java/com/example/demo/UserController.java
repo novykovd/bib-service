@@ -48,11 +48,19 @@ public class UserController {
     }
 
     @PostMapping("/edit")
-    public String editPost(@RequestParam("isbn") List<Long> ibsnList, Principal principal){
-        log.info(ibsnList.toString());
+    public String editPost(@RequestParam(value = "isbn", required = false) List<Long> ibsnList, Principal principal){
 
         Customer customer = repository.findByUsername(principal.getName());
         customer.clearIsbn();
+
+        if(ibsnList == null){
+            repository.save(customer);
+            return "redirect:/user/home";
+        }
+
+        if(ibsnList.size() > 15){
+            return "error";
+        }
 
         for (Long num : ibsnList) {
             int length = String.valueOf(num).length();
